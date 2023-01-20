@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { GradesForStudent } from 'src/models/GradesForStudent';
-import { StudentAboutInfo } from 'src/models/StudentAboutInfo';
-import { SubjectNameTeacherNamePair } from 'src/models/SubjectNameTeacherNamePair';
-import { StudentsClassmatesInfo } from 'src/models/StudentsClassmatesInfo';
-import { SchedulesForStudent } from 'src/models/SchedulesForStudent';
-import { TeachersListForStudent } from 'src/models/TeachersListForStudent';
+import { GradesForStudent } from 'src/models/Grades/GradesForStudent';
+import { StudentAboutInfo } from 'src/models/Students/StudentAboutInfo';
+import { SubjectNameTeacherNamePair } from 'src/models/Subjects/SubjectNameTeacherNamePair';
+import { StudentsClassmatesInfo } from 'src/models/Students/StudentsClassmatesInfo';
+import { SchedulesForStudent } from 'src/models/Schedules/SchedulesForStudent';
+import { TeachersListForStudent } from 'src/models/Teachers/TeachersListForStudent';
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,30 @@
+<div class="container">
+    <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Birth Date</th>
+          <th>Gender</th>
+        </tr>
+        <tr *ngFor="let classmate of classmates">
+          <td>{{classmate.fullName}}</td>
+          <td>{{classmate.email}}</td>
+          <td>{{classmate.dateOfBirth}}</td>
+          <td>{{classmate.gender | gender}}</td>
+        </tr>
+        <tr *ngFor="let classmate of classmates">
+            <td>{{classmate.fullName}}</td>
+            <td>{{classmate.email}}</td>
+            <td>{{classmate.dateOfBirth}}</td>
+            <td>{{classmate.gender | gender}}</td>
+        </tr>
+        <tr *ngFor="let classmate of classmates">
+            <td>{{classmate.fullName}}</td>
+            <td>{{classmate.email}}</td>
+            <td>{{classmate.dateOfBirth}}</td>
+            <td>{{classmate.gender | gender}}</td>
+        </tr>
+    
+    
+      </table>
+</div>

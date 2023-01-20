@@ -5,6 +5,7 @@ export class TeachersListForStudent {
     lastName: string;
     position: string;
     description: string;
+    experience: string;
     subject: string;
     avatar: string;
 
@@ -16,6 +17,7 @@ export class TeachersListForStudent {
         position: string,
         description: string,
         subject: string,
+        experience: string,
         avatar: string
     ) {
         this.userId = userId;
@@ -26,5 +28,6 @@ export class TeachersListForStudent {
         this.description = description;
         this.subject = subject;
         this.avatar = avatar;
+        this.experience = experience;
     }
 }

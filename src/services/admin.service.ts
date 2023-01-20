@@ -6,12 +6,12 @@ import { CreateClassTeacherSubjectRelationCommand } from 'src/commands/Classes/C
 import { UpdateStudentInfoCommand } from 'src/commands/Students/UpdateStudentInfoCommand';
 import { CreateSubjectCommand } from 'src/commands/Subjects/CreateSubjectCommand';
 import { UpdateTeacherInfoCommand } from 'src/commands/Teachers/UpdateTeacherInfoCommand';
-import { ClassWithId } from 'src/models/ClassWithId';
-import { ImprovementListItem } from 'src/models/ImprovementListItem';
-import { IStudentWithInfoRow } from 'src/models/IStudentWithInfoRow';
-import { ITeacherWithInfoRow } from 'src/models/ITeacherWithInfoRow';
-import { SubjectsWithId } from 'src/models/SubjectsWithId';
-import { TeacherNameAndId } from 'src/models/TeacherNameAndId';
+import { ClassWithId } from 'src/models/Classes/ClassWithId';
+import { ImprovementListItem } from 'src/models/Improvements/ImprovementListItem';
+import { IStudentWithInfoRow } from 'src/models/Students/IStudentWithInfoRow';
+import { ITeacherWithInfoRow } from 'src/models/Teachers/ITeacherWithInfoRow';
+import { SubjectsWithId } from 'src/models/Subjects/SubjectsWithId';
+import { TeacherNameAndId } from 'src/models/Teachers/TeacherNameAndId';
 import { PagedResult } from 'src/pagination/PagedResult';
 import { PaginatedRequest } from 'src/pagination/PaginatedRequest';
 

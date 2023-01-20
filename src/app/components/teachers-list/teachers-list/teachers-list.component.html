@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="container">
+        <div *ngFor="let teacher of teachers" class="card" >
+            <img src="{{teacher?.avatar!}}" alt="" class="image">
+            <div class="bio">
+                <h1 class="name">{{teacher.lastName}} {{teacher.firstName}}</h1>
+                <span class="subject"><strong>Subject: </strong>{{teacher.subject}}</span>
+                <span class="position"><strong>Position: </strong>{{teacher.position}}</span>
+                <span class="experience"><strong>Experience: </strong>{{teacher.experience}}</span>
+                <span class="description"><strong>Description:</strong> {{teacher.description}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

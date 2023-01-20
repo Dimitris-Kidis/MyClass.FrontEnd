@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Improvements</h1>
+    <form class="improvementForm" [formGroup]="improvementForm" (ngSubmit)="submitImprovement(improvementForm.value)" >
+        <div class="improvement-wrapper">
+            <input placeholder="Help us get better..." type="text" #improvementInput class="improvement-input" formControlName="improvement" />
+            <div>
+                <small *ngIf="improvementForm.get('improvement')?.errors?.['minlength']">
+                    Improvement has to be at least 50 characters long.
+                </small>
+                <small *ngIf="improvementForm.get('improvement')?.errors?.['maxlength']">
+                    Improvement can't be more than 300 characters long.
+                </small>
+                <!-- <small *ngIf="improvementForm.get('improvement')?.errors?.['required']">
+                improvement text is required
+                </small> -->
+            </div>
+            <button [disabled]="!improvementForm.valid" disabled class="improvement-button" #buttonText>Submit</button>
+        </div>
+    </form> 
+</div>

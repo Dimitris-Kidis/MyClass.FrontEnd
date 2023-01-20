@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UpdateGradeCommand } from 'src/commands/Grades/UpdateGradeCommand';
-import { ClassesAndSubjectsWithIds } from 'src/models/ClassesAndSubjectsWithIds';
-import { IStudentWithGradesRow } from 'src/models/IStudentWithGradesRow';
-import { SchedulesForTeacher } from 'src/models/SchedulesForTeacher';
-import { ShortClassInfo } from 'src/models/ShortClassInfo';
-import { TeacherAboutInfo } from 'src/models/TeacherAboutInfo';
+import { ClassesAndSubjectsWithIds } from 'src/models/Classes/ClassesAndSubjectsWithIds';
+import { IStudentWithGradesRow } from 'src/models/Students/IStudentWithGradesRow';
+import { SchedulesForTeacher } from 'src/models/Schedules/SchedulesForTeacher';
+import { ShortClassInfo } from 'src/models/Classes/ShortClassInfo';
+import { TeacherAboutInfo } from 'src/models/Teachers/TeacherAboutInfo';
 import { PagedResult } from 'src/pagination/PagedResult';
 import { PaginatedRequest } from 'src/pagination/PaginatedRequest';
 

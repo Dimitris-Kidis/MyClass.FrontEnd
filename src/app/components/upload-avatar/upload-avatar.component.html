@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Set new avatar</h1>
+    <label for="file">Select a file</label>
+    <small class="hint">* Available formats: <strong>.png</strong>, <strong>.jpeg</strong></small>
+    <input type="file" id="file" name="file" (change)="onChange($event)" accept="image/png, image/jpeg">
+        <button id="upload" (click)="onFileSelected()">Upload</button>
+        <button id="delete" (click)="onDeletePhoto()">Delete</button>
+
+</div>

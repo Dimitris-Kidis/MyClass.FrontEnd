@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { ChangePasswordDto, RegistrationResponseDto, UserForAuthenticationDto, UserForRegistrationDto } from 'src/models/auth';
-import { User } from 'src/models/User';
+import { ChangePasswordDto, RegistrationResponseDto, UserForAuthenticationDto, UserForRegistrationDto } from 'src/models/Auth/auth';
+import { User } from 'src/models/Users/User';
 
 @Injectable({
   providedIn: 'root'
@@ -57,14 +57,14 @@ export class AuthentificationService {
 
   getUserId(): number {
     const token: any = localStorage.getItem('token');
-    console.log(this.parseJwt(token));
+    // console.log(this.parseJwt(token));
     return parseInt(this.parseJwt(token).id);
   }
 
   getUserdata (): Observable<User> {
     const token: any = localStorage.getItem('token');
     var id:string = this.parseJwt(token).id;
-    return this._httpService.get<User>(`api/common/user-data/${id}`);
+    return this._httpService.get<User>(`api/auth/user-data/${id}`);
   }
 
   isUserAdmin(): boolean {
@@ -75,10 +75,20 @@ export class AuthentificationService {
 
   isUserStudent(): boolean {
     const token: any = localStorage.getItem('token');
-    console.log(this.parseJwt(token))
+    // console.log(this.parseJwt(token))
     var isStudent: string = this.parseJwt(token).studentId;
-    console.log(isStudent);
+    // console.log(isStudent);
     return isStudent == ""? false : true;
+  }
+
+  userRole(): string {
+    if (this.isUserAdmin() == true) return "Admin";
+    if (this.isUserStudent() == true) {
+      return "Student";
+    } else {
+      return "Teacher";
+    }
+    
   }
 
   parseJwt (token: string) {
@@ -90,4 +100,18 @@ export class AuthentificationService {
 
     return JSON.parse(jsonPayload);
   };
+
+  getStudentsClassId(): number{
+    const token: any = localStorage.getItem('token');
+    var classId: number = this.parseJwt(token).classId;
+    // console.log(classId);
+    return classId;
+  }
+
+  getStudentId(): number{
+    const token: any = localStorage.getItem('token');
+    var studentId: number = this.parseJwt(token).studentId;
+    // console.log(studentId);
+    return studentId;
+  }
 }

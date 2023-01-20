@@ -1,0 +1,60 @@
+
+
+<div class="parent">
+    <div class="background" id="background" #back>
+    </div>
+    <div class="window">
+        <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" >
+            <div>
+              <h1>Sign In</h1>
+              <span #invalidLogin id="invalid"></span>
+    
+              <!-- <mat-form-field floatLabel="always" hideRequiredMarker style="display: block;" > -->
+                <label for="email">Email</label>
+                <input placeholder="Email*" type="text" formControlName="email" />
+                <div>
+                  <small *ngIf="loginForm.get('email')?.errors?.['minlength']">
+                    Email has to be at least 5 characters long.
+                  </small>
+                  <small *ngIf="loginForm.get('email')?.errors?.['maxlength']">
+                    Email can't be more than 30 characters long.
+                  </small>
+                  <small *ngIf="loginForm.get('email')?.errors?.['email']">
+                    Email doesn't fit to email format. Please check your email.
+                  </small>
+                </div>
+              <!-- </mat-form-field> -->
+    
+    
+              <!-- <mat-form-field floatLabel="always" hideRequiredMarker style="display: block"> -->
+                <label for="password">Password</label>
+                <!-- <mat-label></mat-label> -->
+                <input type="password" placeholder="Password*" formControlName="password" />
+                <div>
+                  <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                    Password has to be at least 8 characters long.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['maxlength']">
+                    Password can't be more than 20 characters long.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['lowercaseLetterCheck']">
+                      Password has to contain at least one lowercase letter.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['uppercaseLetterCheck']">
+                    Password has to contain at least one uppercase letter.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['digitCheck']">
+                    Password has to contain at least one digit.
+                  </small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['specialCharCheck']">
+                    Password has to contain at least one special character.
+                </small>
+              </div>
+              <!-- <a id="yet" href="" [routerLink]="['/typo/registration']">Don't have an account yet? Sign Up!</a> -->
+            <!-- </mat-form-field> -->
+              <button >Sign In</button>
+            </div>
+          </form>
+    </div>
+</div>
+
