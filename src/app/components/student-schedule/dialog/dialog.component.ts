@@ -13,15 +13,21 @@ import { CommonService } from 'src/services/common.service';
 export class DialogComponent implements OnInit{
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  private _commonService: CommonService
+  private _commonService: CommonService,
+  private _authService: AuthentificationService
   ) {}
 
   info: ScheduleInfo;
   date: string;
   time: string;
+  role: string;
 
   ngOnInit() {
+    this.role = this._authService.userRole();
     var dateAndTime;
+    if (this._authService.userRole() == 'Student') {
+      
+    }
     this._commonService.getScheduleInfo(this.data.id).subscribe((info: ScheduleInfo) => {
       this.info = info;
       dateAndTime = this.info?.dateAndTime.toString().split('T');

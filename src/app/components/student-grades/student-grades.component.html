@@ -1,1 +1,33 @@
-<p>student-grades works!</p>
+<!-- <div class="wrapper"> -->
+<div class="container">
+    <div *ngFor="let grade of grades" class="card">
+        <h1>{{grade.subject}}</h1>
+        <table class="table">
+            <tr>
+              <th>Att. 1</th>
+              <th>Att. 2</th>
+              <th>Inidvid. Work</th>
+              <th>Current</th>
+              <th class="total">Average</th>
+              <th>Labs Absents</th>
+              <th>Sems Absents</th>
+              <th>Course Absents</th>
+              <th class="total">Total Absents</th>
+            </tr>
+            <tr>
+              <td>{{grade.gradeOne}}</td>
+              <td>{{grade.gradeTwo}}</td>
+              <td>{{grade.gradeThree}}</td>
+              <td>{{grade.gradeFour}}</td>
+              <td>
+                {{(grade.gradeOne+grade.gradeTwo+grade.gradeThree+grade.gradeFour)/4}}
+              </td>
+              <td>{{grade.labs}}</td>
+              <td>{{grade.seminars}}</td>
+              <td>{{grade.courses}}</td>
+              <td>{{grade.courses + grade.labs + grade.seminars}}</td>
+            </tr>        
+        </table>
+    </div>
+</div>
+<!-- </div> -->

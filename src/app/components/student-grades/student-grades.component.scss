@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 85%;
+    padding-top: 70px;
+    // background-color: red;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+
+.card {
+    
+    border: 3px solid #919191;
+    border-radius: 7px;
+    padding: 17px;
+    margin-bottom: 60px;
+    // width: 85%;
+
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 14px;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #ececec;
+}
+  
+.total {
+    background-color: #dddddd;
+}
+

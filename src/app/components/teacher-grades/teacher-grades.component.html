@@ -1,0 +1,255 @@
+
+<div class="header">
+  <select id="gender" #list (change)="getSelectedValue($event)">
+    <option disabled selected value="0">Choose a class</option>
+    <option *ngFor="let pair of pairs" value="{{pair.classId}},{{pair.subjectId}}">Class: {{pair.className}}, Subject: {{pair.subjectName}}</option>
+  </select>
+  <div class="download hidden" #downloadButton>
+    <a href="{{downloadLink}}" class="link"><img src="https://typostorage.blob.core.windows.net/avatars/35_Dina+Lupsha2023-01-16T120834459.ef3001001dc48461d3bf7.png" alt="" class="icon">Download This Class Info</a>
+  </div>
+</div>
+
+<div class="invisible" #pagination>
+  <mat-card  class="light" style="height: 100%;" >
+      <div *ngIf="paginationFlag" >
+        <mat-card-header>
+          <mat-card-title class="view-card-title">
+            <!-- <h1>{{pairs[3].className}}, {{pairs[3].subjectName}}</h1> -->
+          </mat-card-title>
+        </mat-card-header>
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <mat-form-field>
+                <!-- <label for="">Search</label> -->
+                <!-- <b>    dSearch</b> -->
+              <input matInput [formControl]="searchInput" (keyup.enter)="applySearch()" placeholder="Search">
+            </mat-form-field>
+            <div class="buttons">
+              <span class="title-spacer"></span>
+              <button mat-mini-fab class="refresh-button" (click)="resetGrid()">
+                <mat-icon>refresh</mat-icon>
+              </button>
+            </div>
+    
+          </mat-toolbar-row>
+        </mat-toolbar>
+    
+        <mat-table #table [dataSource]="pagedReviews?.items!" matSort matSortActive="Id" matSortDirection="asc">
+    
+          <ng-container matColumnDef="studentName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Student </mat-header-cell>
+            <mat-cell *matCellDef="let user"><p style="font-size: 14px;"> {{user.studentName}}</p> </mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="gradeOne">
+            <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Att. 1 </mat-header-cell>
+            <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.gradeOne}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="gradeTwo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Att. 2 </mat-header-cell>
+            <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.gradeTwo}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="gradeThree">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Inidivd. Word </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.gradeThree}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="gradeFour">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Current </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.gradeFour}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="average">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Average </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{(user.gradeOne+user.gradeTwo+user.gradeThree+user.gradeFour)/4}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="labs">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Lab Abs. </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.labs}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="seminars">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Sem Abs. </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.seminars}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="courses">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Course Abs. </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.courses}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="total">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Total Abs. </mat-header-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{user.labs + user.seminars + user.courses}} </mat-cell>
+          </ng-container>
+
+    
+    
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef style="justify-content:right;">
+            </mat-header-cell>
+            <mat-cell *matCellDef="let book" style="justify-content:right;">
+              <button mat-mini-fab class="edit-button" (click)="hidePagination('Edit', book.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+    
+    
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+        </mat-table>
+    
+        <mat-paginator [length]="pagedReviews?.total" [pageSizeOptions]="[10, 20, 30, 50, 100]" pageSize="10"></mat-paginator>
+      </div>
+    
+      <div *ngIf="!paginationFlag">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class="view-card-title">
+              <h1>{{pageTitle}}</h1>
+            </mat-card-title>
+          </mat-card-header>
+          <form novalidate [formGroup]="reviewForm" (ngSubmit)="saveReview()">
+            <mat-toolbar style="background-color: #FFF">
+              <mat-toolbar-row>
+                <span class="title-spacer"></span>
+    
+                <mat-card-actions>
+                  <button mat-mini-fab class="save-button" type="submit" [disabled]="!reviewForm.valid">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                  <button mat-mini-fab class="cancel-button" (click)="refresh()">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-card-actions>
+    
+              </mat-toolbar-row>
+            </mat-toolbar>
+            <mat-card-content>
+              <div class="form-card">
+                <div #invalid style="color: red; text-align: center;" id="invalid"></div>
+    
+                <div class="spacing">
+                  <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                    <label for="gradeOne">Att. 1</label>
+                    <mat-label></mat-label>
+                    <input matInput type="number" placeholder="Att. 1 *" formControlName="gradeOne" style="text-align: center;"/>
+                    <div>
+                      <small *ngIf="reviewForm.get('gradeOne')?.errors?.['gradeRange']">
+                        Grade can only be between 0 and 10 inclusively.
+                      </small>
+                      <small *ngIf="reviewForm.get('gradeOne')?.errors?.['gradeRule']">
+                        Grade can have only one decimal.
+                      </small>
+                    </div>
+                  </mat-form-field>
+
+                
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="gradeTwo">Att. 2</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Att. 2 *" formControlName="gradeTwo" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('gradeTwo')?.errors?.['gradeRange']">
+                          Grade can only be between 0 and 10 inclusively.
+                        </small>
+                        <small *ngIf="reviewForm.get('gradeTwo')?.errors?.['gradeRule']">
+                          Grade can have only one decimal.
+                        </small>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="gradeThree">Individ. Work</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Individ. Work *" formControlName="gradeThree" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('gradeThree')?.errors?.['gradeRange']">
+                          Grade can only be between 0 and 10 inclusively.
+                        </small>
+                        <small *ngIf="reviewForm.get('gradeThree')?.errors?.['gradeRule']">
+                          Grade can have only one decimal.
+                        </small>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="gradeFour">Current</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Current *" formControlName="gradeFour" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('gradeFour')?.errors?.['gradeRange']">
+                          Grade can only be between 0 and 10 inclusively.
+                        </small>
+                        <small *ngIf="reviewForm.get('gradeFour')?.errors?.['gradeRule']">
+                          Grade can have only one decimal.
+                        </small>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="labs">Lab Abs.</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Lab Abs. *" formControlName="labs" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('labs')?.errors?.['absentRange']">
+                          Absents Count can only be between 0 and 15
+                        </small>
+                        <small *ngIf="reviewForm.get('labs')?.errors?.['noLettersAllowed']">
+                          Absents can be written only as numbers.
+                        </small>
+                        <small *ngIf="reviewForm.get('labs')?.errors?.['onlyIntegers']">
+                          Only integers are allowed.
+                        </small>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="seminars">Sem Abs.</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Sem Abs. *" formControlName="seminars" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('seminars')?.errors?.['absentRange']">
+                          Absents Count can only be between 0 and 15
+                        </small>
+                        <small *ngIf="reviewForm.get('seminars')?.errors?.['noLettersAllowed']">
+                          Absents can be written only as numbers.
+                        </small>
+                        <small *ngIf="reviewForm.get('seminars')?.errors?.['onlyIntegers']">
+                          Only integers are allowed.
+                        </small>
+                      </div>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" hideRequiredMarker style="display: block; width: 13%;">
+                      <label for="courses">Course Abs.</label>
+                      <mat-label></mat-label>
+                      <input matInput type="number" placeholder="Course Abs. *" formControlName="courses" style="text-align: center;"/>
+                      <div>
+                        <small *ngIf="reviewForm.get('courses')?.errors?.['absentRange']">
+                          Absents Count can only be between 0 and 15
+                        </small>
+                        <small *ngIf="reviewForm.get('courses')?.errors?.['noLettersAllowed']">
+                          Absents can be written only as numbers.
+                        </small>
+                        <small *ngIf="reviewForm.get('courses')?.errors?.['onlyIntegers']">
+                          Only integers are allowed.
+                        </small>
+                      </div>
+                    </mat-form-field>
+                    
+                </div>
+    
+                </div>
+            </mat-card-content>
+          </form>
+        </mat-card>
+      </div>
+    </mat-card>
+</div>

@@ -1,7 +1,8 @@
 <div class="menu-container">
     <h1>{{info?.subjectName!}}</h1>
     <span>Lesson Name: {{info?.lessonName}}</span>
-    <span>Teacher Name: {{info?.teacherName}}</span>
+    <span *ngIf="role == 'Student' || role == 'Admin'">Teacher Name: {{info?.teacherName}}</span>
+    <span *ngIf="role == 'Teacher' || role == 'Admin'">Class Name: {{info?.className}}</span>
     <span>Date: {{date}}</span>
     <span>Time: {{time}}</span>
     <span>Cabinet: {{info?.cabinet}}</span>

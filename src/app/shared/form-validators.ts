@@ -81,3 +81,42 @@ export function ageRange (control: FormControl) {
     }
     return null;
 }
+
+export function absentRange (control: FormControl) {
+    if (!(parseInt(control.value) > -1 &&
+    parseInt(control.value) < 16) &&
+    control.value != '' && !isNaN(parseInt(control.value))) {
+        return {absentRange: true};
+    }
+    return null;
+}
+
+export function onlyIntegers (control: FormControl) {
+    const value = parseInt(control.value);
+    if (control.value != null) {
+        if ( control.value.toString().indexOf('.') > 0 && control.value != "" && !isNaN(parseInt(control.value))) {
+            return {onlyIntegers: true};
+        }
+    }
+    return null;
+}
+
+export function gradeRange (control: FormControl) {
+    if (!(parseInt(control.value) > -1 &&
+    parseInt(control.value) < 11) &&
+    control.value != '' && !isNaN(parseInt(control.value))) {
+        return {gradeRange: true};
+    }
+    return null;
+}
+
+export function gradeRule (control: FormControl) {
+    const value = parseInt(control.value);
+    if (control.value != null) {
+        if ( control.value.toString().indexOf('.') > 0 && control.value.toString().length > 3 && control.value != "" && !isNaN(parseInt(control.value))) {
+            return {gradeRule: true};
+        }
+    }
+    return null;
+}
+

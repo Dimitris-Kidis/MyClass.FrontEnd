@@ -1,0 +1,23 @@
+<div class="container">
+    <form class="noteForm" [formGroup]="noteForm" (ngSubmit)="submitNote(noteForm.value)" >
+        <div class="note-wrapper">
+            <input placeholder="Leave a note so you don't forget.." type="text" #noteInput class="note-input" formControlName="note" />
+            <button [disabled]="!noteForm.valid" disabled class="note-button" #buttonText>
+                Add
+            </button>
+        </div>
+        <div>
+            <small *ngIf="noteForm.get('note')?.errors?.['minlength']">
+                Improvement has to be at least 3 characters long.
+            </small>
+            <small *ngIf="noteForm.get('note')?.errors?.['maxlength']">
+                Improvement has to be less than 600 characters long.
+            </small>
+        </div>
+    </form> 
+
+    <div class="note" *ngFor="let note of notes">
+        <span>{{note.noteText}}</span>
+        <p>{{note.createdAt}}</p>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { ShortClassInfo } from 'src/models/Classes/ShortClassInfo';
 import { TeacherAboutInfo } from 'src/models/Teachers/TeacherAboutInfo';
 import { PagedResult } from 'src/pagination/PagedResult';
 import { PaginatedRequest } from 'src/pagination/PaginatedRequest';
+import { IGradeForTeacher } from 'src/models/Grades/IGradeForTeacher';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,9 @@ export class TeacherService {
 
   getAllClassesAndSubjectsWithTheirIds(userId: number): Observable<ClassesAndSubjectsWithIds[]> {
     return this._httpService.get<ClassesAndSubjectsWithIds[]>(`api/teacher-controller/classes-and-subjects-with-their-ids-for-pagination/${userId}`);
+  }
+
+  getGradeLine(gradeId: number): Observable<IGradeForTeacher> {
+    return this._httpService.get<IGradeForTeacher>(`api/teacher-controller/gradeline/${gradeId}`);
   }
 }

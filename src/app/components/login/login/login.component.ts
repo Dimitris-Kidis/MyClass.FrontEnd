@@ -61,15 +61,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
           console.log('GOT IT ' + res.token);
           const role = this._authService.userRole();
           if (role == 'Student') {
-            this._router.navigate(['main/studentaccount']).then(() => {
+            this._router.navigate(['main/student-account']).then(() => {
               window.location.reload();
            });
           } else if (role == 'Teacher') {
-            this._router.navigate(['main/teacheraccount']).then(() => {
+            this._router.navigate(['main/teacher-account']).then(() => {
               window.location.reload();
             });
           } else {
-            this._router.navigate(['main/adminaccount']).then(() => {
+            this._router.navigate(['main/admin-account']).then(() => {
               window.location.reload();
             });
           }

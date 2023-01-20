@@ -20,9 +20,9 @@ export class PaginatedRequest {
         ) {
         this.pageIndex = paginator.pageIndex;
         this.pageSize = paginator.pageSize;
-        this.columnNameForSorting = sort.active;
         this.sortDirection = sort.direction;            
         this.requestFilters = filters;
+        this.columnNameForSorting = sort.active;
         this.classId = classId;
         this.subjectId = subjectId;
     }

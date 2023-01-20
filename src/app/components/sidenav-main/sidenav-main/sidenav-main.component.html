@@ -9,31 +9,32 @@
         </div>
         <div class="divider"></div>
         <mat-nav-list>
-          <a mat-list-item routerLink="{{role == 'Student' ? 'studentaccount' : (role == 'Teacher' ? 'teacheraccount' : 'adminaccount')}}">
+          <a mat-list-item routerLink="{{role == 'Student' ? 'student-account' : (role == 'Teacher' ? 'teacher-account' : 'admin-account')}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>account_circle</mat-icon>
               <span mat-line class="menu-item-name">Account</span>
             </div>
           </a>
-          <a mat-list-item routerLink="classmates">
+          <a mat-list-item routerLink="classmates" *ngIf="role == 'Student'">
             <div class="menu-item">
               <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
               <span mat-line class="menu-item-name">Classmates</span>
             </div>
           </a>
-          <a mat-list-item routerLink="teachers">
+          
+          <a mat-list-item routerLink="teachers" *ngIf="role == 'Student'">
             <div class="menu-item">
               <mat-icon mat-list-icon>people</mat-icon>
               <span mat-line class="menu-item-name">Teachers</span>
             </div>
           </a>
-          <a mat-list-item routerLink="studentschedule">
+          <a mat-list-item routerLink="{{role == 'Student' ? 'student-schedule' : (role == 'Teacher' ? 'teacher-schedule' : 'admin-schedule')}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>event_note</mat-icon>
               <span mat-line class="menu-item-name">Schedule</span>
             </div>
           </a>
-          <a mat-list-item routerLink="grades">
+          <a mat-list-item routerLink="{{role == 'Student' ? 'student-grades' : (role == 'Teacher' ? 'teacher-grades' : 'admin-grades')}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>grade</mat-icon>
               <span mat-line class="menu-item-name">Grades</span>

@@ -16,6 +16,28 @@ import { StudentScheduleComponent } from '../student-schedule/student-schedule.c
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from '../student-schedule/dialog/dialog.component';
+import { StudentGradesComponent } from '../student-grades/student-grades.component';
+import { NotesComponent } from '../notes/notes.component';
+import { TeacherAccountComponent } from '../teacher-account/teacher-account.component';
+import { TeacherAboutInfoComponent } from '../teacher-about-info/teacher-about-info.component';
+import { ClassesListComponent } from 'src/app/components/classes-list/classes-list.component';
+import { TeacherScheduleComponent } from '../teacher-schedule/teacher-schedule.component';
+import { TeacherGradesComponent } from '../teacher-grades/teacher-grades.component';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -24,8 +46,24 @@ import { DialogComponent } from '../student-schedule/dialog/dialog.component';
     MainRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     FullCalendarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatInputModule,
+    // NoopAnimationsModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSortModule
   ],
   entryComponents: [],
   declarations: [
@@ -39,10 +77,23 @@ import { DialogComponent } from '../student-schedule/dialog/dialog.component';
     GenderPipe,
     TeachersListComponent,
     StudentScheduleComponent,
-    DialogComponent
+    DialogComponent,
+    StudentGradesComponent,
+    NotesComponent,
+    TeacherAccountComponent,
+    TeacherAboutInfoComponent,
+    ClassesListComponent,
+    TeacherScheduleComponent,
+    TeacherGradesComponent
   ],
   providers: [
 
+  ],
+  exports: [
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule
   ]
 })
 export class MainModule { }
