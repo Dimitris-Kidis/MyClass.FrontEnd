@@ -14,6 +14,13 @@ import { SubjectsWithId } from 'src/models/Subjects/SubjectsWithId';
 import { TeacherNameAndId } from 'src/models/Teachers/TeacherNameAndId';
 import { PagedResult } from 'src/pagination/PagedResult';
 import { PaginatedRequest } from 'src/pagination/PaginatedRequest';
+import { AdminAboutInfo } from 'src/models/Admins/AdminAboutInfo';
+import { StudentOrAdminRow } from 'src/models/Students/StudentOrAdminRow';
+import { TeacherRow } from 'src/models/Teachers/TeacherRow';
+import { IAdminRow } from 'src/models/Admins/IAdminRow';
+import { RelationInfoRow } from 'src/models/Relations/RelationInfoRow';
+import { ScheduleInfo } from 'src/models/Schedules/ScheduleInfo';
+import { CreateScheduleCommand } from 'src/commands/Schedules/CreateScheduleCommand';
 
 @Injectable({
   providedIn: 'root'
@@ -79,4 +86,34 @@ export class AdminService {
     console.log(paginatedRequest);
     return this._httpService.post<PagedResult<ITeacherWithInfoRow>>('api/admin-controller/teachers-paged', paginatedRequest);
   }
+
+  getAdminAboutInfo(userId: number): Observable<AdminAboutInfo> {
+    return this._httpService.get<AdminAboutInfo>(`api/admin-controller/about-info/${userId}`);
+  }
+
+  getStudentOrAdmin(userId: number): Observable<StudentOrAdminRow> {
+    return this._httpService.get<StudentOrAdminRow>(`api/admin-controller/student-or-admin/${userId}`);
+  }
+
+  getTeacher(userId: number): Observable<TeacherRow> {
+    return this._httpService.get<TeacherRow>(`api/admin-controller/teacher/${userId}`);
+  }
+
+  getPagedAdminsInfo(paginatedRequest: PaginatedRequest): Observable<PagedResult<IAdminRow>> {
+    console.log(paginatedRequest);
+    return this._httpService.post<PagedResult<IAdminRow>>('api/admin-controller/admins-paged', paginatedRequest);
+  }
+
+  getAllRelations(): Observable<RelationInfoRow[]> {
+    return this._httpService.get<RelationInfoRow[]>(`api/admin-controller/relations`);
+  }
+
+  getAllSchedules(): Observable<ScheduleInfo[]> {
+    return this._httpService.get<ScheduleInfo[]>(`api/admin-controller/all-schedules`);
+  }
+
+  createSchedule(command: CreateScheduleCommand): Observable<any> {
+    return this._httpService.post<any>("api/admin-controller/schedule", command);
+  }
+  
 }

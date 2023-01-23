@@ -10,6 +10,8 @@ import { NotesComponent } from '../notes/notes.component';
 import { TeacherAccountComponent } from '../teacher-account/teacher-account.component';
 import { TeacherScheduleComponent } from '../teacher-schedule/teacher-schedule.component';
 import { TeacherGradesComponent } from '../teacher-grades/teacher-grades.component';
+import { AdminAccountComponent } from '../admin-account/admin-account.component';
+import { AdminsTeacherListComponent } from '../admins-teacher-list/admins-teacher-list.component';
 
 
 
@@ -25,7 +27,7 @@ const mainRoutes: Routes = [
         children: [
           { path: 'student-account', component: StudentAccountComponent },
           { path: 'classmates', component: ClassmatesComponent },
-          { path: 'teachers', component: TeachersListComponent },
+          { path: 'student-teachers', component: TeachersListComponent },
           { path: 'student-schedule', component: StudentScheduleComponent },
           { path: 'student-grades', component: StudentGradesComponent },
 
@@ -34,6 +36,8 @@ const mainRoutes: Routes = [
           { path: 'teacher-grades', component: TeacherGradesComponent },
 
 
+          { path: 'admin-account', component: AdminAccountComponent },
+          { path: 'admin-teachers', component: AdminsTeacherListComponent },
 
 
 

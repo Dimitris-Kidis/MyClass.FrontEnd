@@ -38,6 +38,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
+import { AdminAccountComponent } from '../admin-account/admin-account.component';
+import { AllImprovementsComponent } from '../all-improvements/all-improvements.component';
+import { AdminsTeacherListComponent } from '../admins-teacher-list/admins-teacher-list.component';
 
 
 @NgModule({
@@ -84,7 +87,10 @@ import { MatSortModule } from '@angular/material/sort';
     TeacherAboutInfoComponent,
     ClassesListComponent,
     TeacherScheduleComponent,
-    TeacherGradesComponent
+    TeacherGradesComponent,
+    AdminAccountComponent,
+    AllImprovementsComponent,
+    AdminsTeacherListComponent
   ],
   providers: [
 

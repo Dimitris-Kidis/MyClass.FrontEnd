@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Improvement Ideas</h1>
+    <div class="list">
+        <div class="pair" *ngFor="let idea of improvements">
+            <span><strong>User: </strong>{{idea.userName}}</span>
+            <span><strong>Role: </strong>{{idea.role}}</span>
+            <span><strong>Date & Time: </strong>{{idea.time.split('T')[0]}}, {{idea.time.split('T')[1].substring(0,5)}}</span>
+            <br>
+            <span (click)="show(idea.id)"><strong>Idea: </strong>{{idea.improvementText}}</span>
+        </div>
+    </div>
+</div>

@@ -22,7 +22,7 @@
             </div>
           </a>
           
-          <a mat-list-item routerLink="teachers" *ngIf="role == 'Student'">
+          <a *ngIf="role == 'Student' || role == 'Admin'" mat-list-item routerLink="{{role == 'Student' ? 'student-teachers' : 'admin-teachers'}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>people</mat-icon>
               <span mat-line class="menu-item-name">Teachers</span>

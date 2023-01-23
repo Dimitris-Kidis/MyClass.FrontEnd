@@ -30,7 +30,7 @@ export interface UserForRegistrationDto {
     dateOfBirth: string;
     gender: string;
     type: number;
-    classId: number;
+    classId: number | null;
     subjectId: number | null;
     position: string | null;
     description: string | null;
