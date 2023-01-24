@@ -28,13 +28,31 @@
               <span mat-line class="menu-item-name">Teachers</span>
             </div>
           </a>
+          <a *ngIf="role == 'Admin'" mat-list-item routerLink="admin-students">
+            <div class="menu-item">
+              <mat-icon mat-list-icon>perm_identity</mat-icon>
+              <span mat-line class="menu-item-name">Students</span>
+            </div>
+          </a>
+          <a *ngIf="role == 'Admin'" mat-list-item routerLink="admin-admins">
+            <div class="menu-item">
+              <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
+              <span mat-line class="menu-item-name">Admins</span>
+            </div>
+          </a>
+          <a *ngIf="role == 'Admin'" mat-list-item routerLink="admin-relations">
+            <div class="menu-item">
+              <mat-icon mat-list-icon>scatter_plot</mat-icon>
+              <span mat-line class="menu-item-name">Relations</span>
+            </div>
+          </a>
           <a mat-list-item routerLink="{{role == 'Student' ? 'student-schedule' : (role == 'Teacher' ? 'teacher-schedule' : 'admin-schedule')}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>event_note</mat-icon>
               <span mat-line class="menu-item-name">Schedule</span>
             </div>
           </a>
-          <a mat-list-item routerLink="{{role == 'Student' ? 'student-grades' : (role == 'Teacher' ? 'teacher-grades' : 'admin-grades')}}">
+          <a *ngIf="role != 'Admin'" mat-list-item routerLink="{{role == 'Student' ? 'student-grades' : 'Teacher'}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>grade</mat-icon>
               <span mat-line class="menu-item-name">Grades</span>

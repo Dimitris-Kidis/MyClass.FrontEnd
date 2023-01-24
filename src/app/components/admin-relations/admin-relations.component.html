@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="container">
+    <table class="table first" >
+      <tr>
+        <th>Subjects</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let subject of subjectsWithIds">
+        <td>{{subject.subjectName}}</td>
+        <td><button class="delete" (click)="deleteSubject(subject.id)"><strong>Delete</strong></button></td>
+      </tr>
+      <tr>
+        <td><input type="text" #subjectInput placeholder="New subject.." name="" id=""></td>
+        <td><button class="add" (click)="addSubject()"><strong>Add</strong></button></td>
+      </tr>
+    </table>
+
+    <table class="table second">
+      <tr>
+        <th>Classes</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let class of classesWithIds">
+        <td>{{class.className}}</td>
+        <td><button class="delete" (click)="deleteClass(class.id)"><strong>Delete</strong></button></td>
+      </tr>
+      <tr>
+        <td><input type="text" #classInput placeholder="New class.." name="" id=""></td>
+        <td><button class="add" (click)="addClass()"><strong>Add</strong></button></td>
+      </tr>
+    </table>
+
+    <table class="table third">
+      <tr>
+        <th>Test</th>
+        <th>Test</th>
+      </tr>
+      <tr>
+        <td>Test</td>
+        <td>Test</td>
+      </tr>
+    </table>
+  </div>
+</div>

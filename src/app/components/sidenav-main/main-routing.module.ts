@@ -12,6 +12,10 @@ import { TeacherScheduleComponent } from '../teacher-schedule/teacher-schedule.c
 import { TeacherGradesComponent } from '../teacher-grades/teacher-grades.component';
 import { AdminAccountComponent } from '../admin-account/admin-account.component';
 import { AdminsTeacherListComponent } from '../admins-teacher-list/admins-teacher-list.component';
+import { AdminsStudentListComponent } from '../admins-student-list/admins-student-list.component';
+import { AdminsAdminListComponent } from '../admins-admin-list/admins-admin-list.component';
+import { AdminScheduleComponent } from '../admin-schedule/admin-schedule.component';
+import { AdminRelationsComponent } from '../admin-relations/admin-relations.component';
 
 
 
@@ -38,6 +42,10 @@ const mainRoutes: Routes = [
 
           { path: 'admin-account', component: AdminAccountComponent },
           { path: 'admin-teachers', component: AdminsTeacherListComponent },
+          { path: 'admin-students', component: AdminsStudentListComponent },
+          { path: 'admin-admins', component: AdminsAdminListComponent },
+          { path: 'admin-relations', component: AdminRelationsComponent },
+          { path: 'admin-schedule', component: AdminScheduleComponent },
 
 
 

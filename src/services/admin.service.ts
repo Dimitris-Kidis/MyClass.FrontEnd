@@ -115,5 +115,20 @@ export class AdminService {
   createSchedule(command: CreateScheduleCommand): Observable<any> {
     return this._httpService.post<any>("api/admin-controller/schedule", command);
   }
+
+  updateAdminInfo(command: UpdateStudentInfoCommand): Observable<any> {
+    return this._httpService.put<any>("api/admin-controller/admin", command);
+  }
   
+  deleteAdmin(userId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/admin/${userId}`);
+  }
+
+  deleteSubject(subjectId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/subject/${subjectId}`);
+  }
+
+  deleteClass(classId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/class/${classId}`);
+  }
 }

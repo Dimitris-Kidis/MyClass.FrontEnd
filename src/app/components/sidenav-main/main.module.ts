@@ -41,6 +41,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { AdminAccountComponent } from '../admin-account/admin-account.component';
 import { AllImprovementsComponent } from '../all-improvements/all-improvements.component';
 import { AdminsTeacherListComponent } from '../admins-teacher-list/admins-teacher-list.component';
+import { AdminsStudentListComponent } from '../admins-student-list/admins-student-list.component';
+import { AdminsAdminListComponent } from '../admins-admin-list/admins-admin-list.component';
+import { AdminScheduleComponent } from '../admin-schedule/admin-schedule.component';
+import { AdminRelationsComponent } from '../admin-relations/admin-relations.component';
 
 
 @NgModule({
@@ -90,7 +94,11 @@ import { AdminsTeacherListComponent } from '../admins-teacher-list/admins-teache
     TeacherGradesComponent,
     AdminAccountComponent,
     AllImprovementsComponent,
-    AdminsTeacherListComponent
+    AdminsTeacherListComponent,
+    AdminsStudentListComponent,
+    AdminsAdminListComponent,
+    AdminScheduleComponent,
+    AdminRelationsComponent
   ],
   providers: [
 
