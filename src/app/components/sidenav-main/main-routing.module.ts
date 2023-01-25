@@ -16,6 +16,7 @@ import { AdminsStudentListComponent } from '../admins-student-list/admins-studen
 import { AdminsAdminListComponent } from '../admins-admin-list/admins-admin-list.component';
 import { AdminScheduleComponent } from '../admin-schedule/admin-schedule.component';
 import { AdminRelationsComponent } from '../admin-relations/admin-relations.component';
+import { AdminLessonsComponent } from '../admin-lessons/admin-lessons.component';
 
 
 
@@ -45,6 +46,7 @@ const mainRoutes: Routes = [
           { path: 'admin-students', component: AdminsStudentListComponent },
           { path: 'admin-admins', component: AdminsAdminListComponent },
           { path: 'admin-relations', component: AdminRelationsComponent },
+          { path: 'admin-lessons', component: AdminLessonsComponent },
           { path: 'admin-schedule', component: AdminScheduleComponent },
 
 

@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="container">
+    <table class="table first">
+      <tr>
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Cabinet</th>
+        <th>Lesson Name</th>
+        <th>Action</th>
+      </tr>
+
+      <tr *ngFor="let schedule of schedules">
+        <td>{{schedule.className}}</td>
+        <td>{{schedule.subjectName}}</td>
+        <td>{{schedule.teacherName}}</td>
+        <td>{{schedule.dateAndTime.split('T')[0]}}</td>
+        <td>{{schedule.dateAndTime.split('T')[1].substring(0, 5)}}</td>
+        <td>{{schedule.cabinet}}</td>
+        <td>{{schedule.lessonName}}</td>
+        <td><button class="delete" (click)="deleteLesson(schedule.id)"><strong>Delete</strong></button></td>
+      </tr>
+      <tr>
+        <td>
+            <select #classSelect>
+              <option disabled selected value="-1">Select a class</option>
+              <option *ngFor="let class of classesWithIds" value="{{class.id}}">{{class.className}}</option>
+            </select>
+          </td>
+          <td>
+            <select #subjectSelect>
+              <option disabled selected value="-1">Select a subject</option>
+              <option *ngFor="let subject of subjectsWithIds" value="{{subject.id}}">{{subject.subjectName}}</option>
+            </select>
+          </td>
+          <td>
+            <select #teacherSelect>
+              <option disabled selected value="-1">Select a teacher</option>
+              <option *ngFor="let teacher of teachersWithIds" value="{{teacher.id}}">{{teacher.teacherName}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="date" matInput placeholder="Date *" #dateSelect/>
+          </td>
+          <td>
+            <select #timeSelect>
+              <option disabled selected value="-1">Select time</option>
+              <option *ngFor="let time of times" value="{{time}}">{{time}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="text" name="" id="" placeholder="Enter cabinet.." #cabinetSelect >
+          </td>
+          <td>
+            <input type="text" name="" id="" placeholder="Enter lesson name.." #lessonNameSelect>
+          </td>
+        <td><button class="add" (click)="addLesson()"><strong>Add</strong></button></td>
+      </tr>
+    </table>
+  </div>
+</div>

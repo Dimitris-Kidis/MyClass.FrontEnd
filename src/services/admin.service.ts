@@ -73,7 +73,7 @@ export class AdminService {
     return this._httpService.get<ClassWithId[]>(`api/admin-controller/teacher-classes-with-ids/${userId}`);
   }
 
-  getAllTeachersNamesAndIds(): Observable<TeacherNameAndId[]> {
+  getAllTeachersWithIds(): Observable<TeacherNameAndId[]> {
     return this._httpService.get<TeacherNameAndId[]>(`api/admin-controller/all-teachers-with-ids`);
   }
 
@@ -130,5 +130,13 @@ export class AdminService {
 
   deleteClass(classId: number): Observable<any> {
     return this._httpService.delete<any>(`api/admin-controller/class/${classId}`);
+  }
+
+  deleteRelation(relationId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/relation/${relationId}`);
+  }
+
+  deleteSchedule(scheduleId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/schedule/${scheduleId}`);
   }
 }

@@ -46,6 +46,12 @@
               <span mat-line class="menu-item-name">Relations</span>
             </div>
           </a>
+          <a *ngIf="role == 'Admin'" mat-list-item routerLink="admin-lessons">
+            <div class="menu-item">
+              <mat-icon mat-list-icon>assignment</mat-icon>
+              <span mat-line class="menu-item-name">Lessons</span>
+            </div>
+          </a>
           <a mat-list-item routerLink="{{role == 'Student' ? 'student-schedule' : (role == 'Teacher' ? 'teacher-schedule' : 'admin-schedule')}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>event_note</mat-icon>

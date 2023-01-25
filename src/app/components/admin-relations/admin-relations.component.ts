@@ -1,8 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CreateClassCommand } from 'src/commands/Classes/CreateClassCommand';
+import { CreateClassTeacherSubjectRelationCommand } from 'src/commands/Classes/CreateClassTeacherSubjectRelationCommand';
 import { CreateSubjectCommand } from 'src/commands/Subjects/CreateSubjectCommand';
 import { ClassWithId } from 'src/models/Classes/ClassWithId';
+import { RelationInfoRow } from 'src/models/Relations/RelationInfoRow';
 import { SubjectsWithId } from 'src/models/Subjects/SubjectsWithId';
+import { TeacherNameAndId } from 'src/models/Teachers/TeacherNameAndId';
 import { AdminService } from 'src/services/admin.service';
 import { AuthentificationService } from 'src/services/authentification.service';
 
@@ -21,6 +24,8 @@ export class AdminRelationsComponent implements OnInit{
 
   classesWithIds: ClassWithId[];
   subjectsWithIds: SubjectsWithId[];
+  teachersWithIds: TeacherNameAndId[];
+  relations: RelationInfoRow[];
 
   ngOnInit(): void {
     this._adminService.getAllClassesWithIds().subscribe(
@@ -33,7 +38,21 @@ export class AdminRelationsComponent implements OnInit{
     this._adminService.getAllSubjectsWithIds().subscribe(
       (subjects: SubjectsWithId[]) => {
         this.subjectsWithIds = subjects;
-        console.log(subjects);
+        // console.log(subjects);
+      }
+    );
+
+    this._adminService.getAllTeachersWithIds().subscribe(
+      (teachers: TeacherNameAndId[]) => {
+        this.teachersWithIds = teachers;
+        // console.log(teachers);
+      }
+    );
+
+    this._adminService.getAllRelations().subscribe(
+      (relations: RelationInfoRow[]) => {
+        this.relations = relations;
+        // console.log(relations);
       }
     );
   }
@@ -47,20 +66,20 @@ export class AdminRelationsComponent implements OnInit{
 
 
   addSubject() {
-    console.log(this.subjectInput.nativeElement.value);
+    // console.log(this.subjectInput.nativeElement.value);
     this.subject.subjectName = this.subjectInput.nativeElement.value;
     this._adminService.createSubject(this.subject).subscribe();
     this.refresh();
   }
 
   deleteSubject(id: number) {
-    console.log(id);
+    // console.log(id);
     this._adminService.deleteSubject(id).subscribe();
     this.refresh();
   }
 
   addClass() {
-    console.log(this.classInput.nativeElement.value);
+    // console.log(this.classInput.nativeElement.value);
     this.class.className = this.classInput.nativeElement.value;
     this._adminService.createClass(this.class).subscribe();
     this.refresh();
@@ -70,6 +89,42 @@ export class AdminRelationsComponent implements OnInit{
     console.log(id);
     this._adminService.deleteClass(id).subscribe();
     this.refresh();
+  }
+
+
+  @ViewChild('classSelect') classSelect: ElementRef;
+  @ViewChild('subjectSelect') subjectSelect: ElementRef;
+  @ViewChild('teacherSelect') teacherSelect: ElementRef;
+
+
+  addRelation() {
+    var classId = this.classSelect.nativeElement.value;
+    var subjectId = this.subjectSelect.nativeElement.value;
+    var teacherId = this.teacherSelect.nativeElement.value;
+    if ( +classId == -1 || +subjectId == -1 || +teacherId == -1 )
+    {
+      
+    } else {
+      var relation: CreateClassTeacherSubjectRelationCommand = {
+        classId: classId,
+        subjectId: subjectId,
+        teacherId: teacherId
+      }
+      this._adminService.createClassTeacherSubjectRelation(relation).subscribe(
+        () => {
+          this.refresh();
+        }
+      );
+    }
+    
+  }
+
+  deleteRelation(id: number) {
+    this._adminService.deleteRelation(id).subscribe(
+      () => {
+        this.refresh();
+      }
+    );
   }
 
   refresh() {
