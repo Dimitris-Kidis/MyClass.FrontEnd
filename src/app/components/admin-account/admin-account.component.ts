@@ -7,14 +7,6 @@ import { AdminService } from 'src/services/admin.service';
   templateUrl: './admin-account.component.html',
   styleUrls: ['./admin-account.component.scss']
 })
-export class AdminAccountComponent implements OnInit {
-
-  constructor(
-    private _adminService: AdminService
-  ) {}
-
-
-  ngOnInit(): void {
-  }
+export class AdminAccountComponent {
 
 }

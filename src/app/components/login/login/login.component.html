@@ -9,7 +9,6 @@
               <h1>Sign In</h1>
               <span #invalidLogin id="invalid"></span>
     
-              <!-- <mat-form-field floatLabel="always" hideRequiredMarker style="display: block;" > -->
                 <label for="email">Email</label>
                 <input placeholder="Email*" type="text" formControlName="email" />
                 <div>
@@ -23,12 +22,8 @@
                     Email doesn't fit to email format. Please check your email.
                   </small>
                 </div>
-              <!-- </mat-form-field> -->
-    
-    
-              <!-- <mat-form-field floatLabel="always" hideRequiredMarker style="display: block"> -->
+
                 <label for="password">Password</label>
-                <!-- <mat-label></mat-label> -->
                 <input type="password" placeholder="Password*" formControlName="password" />
                 <div>
                   <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
@@ -50,8 +45,6 @@
                     Password has to contain at least one special character.
                 </small>
               </div>
-              <!-- <a id="yet" href="" [routerLink]="['/typo/registration']">Don't have an account yet? Sign Up!</a> -->
-            <!-- </mat-form-field> -->
               <button >Sign In</button>
             </div>
           </form>

@@ -17,7 +17,6 @@ export class StudentAboutInfoComponent implements OnInit{
 
   ngOnInit(): void {
       this._studService.getStudentAboutInfo(this._authService.getUserId()).subscribe((info: StudentAboutInfo) => {
-      console.log(info);
       this.student = info;
     });
   }

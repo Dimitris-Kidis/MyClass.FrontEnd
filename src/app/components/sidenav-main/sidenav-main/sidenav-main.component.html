@@ -1,4 +1,4 @@
-<div [hidden]="false">
+<div [hidden]="false" (click)="checkRoute()">
     <mat-sidenav-container class="app-container" autosize fullscreen>
       <mat-sidenav dark #sidenav mode="side" [opened]="true">
         <div class="sidenav-header">
@@ -15,7 +15,7 @@
               <span mat-line class="menu-item-name">Account</span>
             </div>
           </a>
-          <a mat-list-item routerLink="classmates" *ngIf="role == 'Student'">
+          <a mat-list-item routerLink="student-classmates" *ngIf="role == 'Student'">
             <div class="menu-item">
               <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
               <span mat-line class="menu-item-name">Classmates</span>
@@ -58,7 +58,7 @@
               <span mat-line class="menu-item-name">Schedule</span>
             </div>
           </a>
-          <a *ngIf="role != 'Admin'" mat-list-item routerLink="{{role == 'Student' ? 'student-grades' : 'Teacher'}}">
+          <a *ngIf="role != 'Admin'" mat-list-item routerLink="{{role == 'Student' ? 'student-grades' : 'teacher-grades'}}">
             <div class="menu-item">
               <mat-icon mat-list-icon>grade</mat-icon>
               <span mat-line class="menu-item-name">Grades</span>

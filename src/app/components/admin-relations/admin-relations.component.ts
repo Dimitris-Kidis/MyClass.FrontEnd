@@ -38,21 +38,18 @@ export class AdminRelationsComponent implements OnInit{
     this._adminService.getAllSubjectsWithIds().subscribe(
       (subjects: SubjectsWithId[]) => {
         this.subjectsWithIds = subjects;
-        // console.log(subjects);
       }
     );
 
     this._adminService.getAllTeachersWithIds().subscribe(
       (teachers: TeacherNameAndId[]) => {
         this.teachersWithIds = teachers;
-        // console.log(teachers);
       }
     );
 
     this._adminService.getAllRelations().subscribe(
       (relations: RelationInfoRow[]) => {
         this.relations = relations;
-        // console.log(relations);
       }
     );
   }
@@ -66,20 +63,17 @@ export class AdminRelationsComponent implements OnInit{
 
 
   addSubject() {
-    // console.log(this.subjectInput.nativeElement.value);
     this.subject.subjectName = this.subjectInput.nativeElement.value;
     this._adminService.createSubject(this.subject).subscribe();
     this.refresh();
   }
 
   deleteSubject(id: number) {
-    // console.log(id);
     this._adminService.deleteSubject(id).subscribe();
     this.refresh();
   }
 
   addClass() {
-    // console.log(this.classInput.nativeElement.value);
     this.class.className = this.classInput.nativeElement.value;
     this._adminService.createClass(this.class).subscribe();
     this.refresh();

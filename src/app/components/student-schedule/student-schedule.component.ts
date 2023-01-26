@@ -63,26 +63,3 @@ export class StudentScheduleComponent implements OnInit{
   }
 }
 
-
-
-// objs: object[];
-//   ngOnInit(): void {
-//     this._studService.getSchedulesForStudent(this._authService.getStudentsClassId()).subscribe((schds: SchedulesForStudent[]) => {
-//       this.schedules = schds;
-//       console.log(schds);
-//       for (let i = 0; i < schds.length; i++) {
-//         const event = {Id: schds[i].id, title: `${schds[i].subjectName}`, start: new Date(schds[i].dateAndTime)};
-//       }
-//       this.calendarOptions = {
-//         plugins: [dayGridPlugin],
-//         initialView: 'dayGridMonth',
-//         weekends: true,
-//         eventClick: this.openEvent.bind(this),
-//         events: [
-//           { title: 'Meeting', start: new Date() },
-//           { Id: 1111, title: 'Meeting', start: new Date(2023, 0, 16, 12, 30)},
-//         ]
-//       };
-//     });
-//   }
-//   calendarOptions: CalendarOptions;

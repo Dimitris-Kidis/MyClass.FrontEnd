@@ -20,7 +20,6 @@ export class StudentGradesComponent implements OnInit{
   ngOnInit(): void {
     this._studService.getGradesForStudent(this._authService.getStudentId()).subscribe((grades: GradesForStudent[]) => {
       this.grades = grades;
-      console.log(grades)
     });
   }
 }

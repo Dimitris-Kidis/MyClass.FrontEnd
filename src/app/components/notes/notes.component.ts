@@ -41,7 +41,6 @@ export class NotesComponent {
         notes[i].createdAt = 'Created At: ' + dateAndTime[0] + ', ' + dateAndTime[1].substring(0,5);
       }
       this.notes = notes;
-      console.log(notes);
     });
     
 

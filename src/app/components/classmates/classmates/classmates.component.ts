@@ -21,7 +21,6 @@ export class ClassmatesComponent implements OnInit{
   ngOnInit(): void {
     this._studService.getStudentsClassmatesInfo(this._authService.getStudentsClassId()).subscribe((classmates: StudentsClassmatesInfo[]) => {
       this.classmates = classmates;
-      console.log(classmates);
     });
   }
 

@@ -31,7 +31,7 @@ const mainRoutes: Routes = [
         path: '',
         children: [
           { path: 'student-account', component: StudentAccountComponent },
-          { path: 'classmates', component: ClassmatesComponent },
+          { path: 'student-classmates', component: ClassmatesComponent },
           { path: 'student-teachers', component: TeachersListComponent },
           { path: 'student-schedule', component: StudentScheduleComponent },
           { path: 'student-grades', component: StudentGradesComponent },

@@ -29,7 +29,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
     @ViewChild('inputEmail') inputEmail!: ElementRef;
 
     ngOnInit(): void {
-      // if (this._authService.isLoggedIn()) this._router.navigate(['/typo/main']);
+
+      if (this._authService.isLoggedIn()) {
+        if (this._authService.userRole() == 'Student') {
+          this._router.navigate(['/main/student-account']);
+        } else if (this._authService.userRole() == 'Teacher') {
+          this._router.navigate(['/main/teacher-account']);
+
+        } else if (this._authService.userRole() == 'Admin') {
+          this._router.navigate(['/main/admin-account']);
+
+        }
+      }
+
       this.loginForm = new FormGroup({
         email: new FormControl("", [Validators.required,
                                        Validators.email,

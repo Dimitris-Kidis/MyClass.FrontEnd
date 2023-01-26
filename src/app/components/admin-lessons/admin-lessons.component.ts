@@ -77,28 +77,24 @@ export class AdminLessonsComponent implements OnInit {
     this._adminService.getAllSchedules().subscribe(
       (schedules: ScheduleInfo[]) => {
         this.schedules = schedules;
-        // console.log(schedules);
       }
     );
 
     this._adminService.getAllClassesWithIds().subscribe(
       (classes: ClassWithId[]) => {
         this.classesWithIds = classes;
-        // console.log(classes);
       }
     );
 
     this._adminService.getAllSubjectsWithIds().subscribe(
       (subjects: SubjectsWithId[]) => {
         this.subjectsWithIds = subjects;
-        // console.log(subjects);
       }
     );
 
     this._adminService.getAllTeachersWithIds().subscribe(
       (teachers: TeacherNameAndId[]) => {
         this.teachersWithIds = teachers;
-        // console.log(teachers);
       }
     );
   }
@@ -128,16 +124,7 @@ export class AdminLessonsComponent implements OnInit {
     var cabinet = this.cabinetSelect.nativeElement.value;
     var lessonName = this.lessonNameSelect.nativeElement.value;
 
-    console.log(
-      `
-      classId: ${classId},
-      subjectId: ${subjectId},
-      teacherId: ${teacherId},
-      date: ${date},
-      time: ${time},
-      cabinet: ${cabinet},
-      lessonName: ${lessonName},
-      `);
+
     if (+classId == -1 || +subjectId == -1 || +teacherId == -1 || +time == -1 || date == "" || lessonName == "") {
       console.log('WRONG');
     } else {

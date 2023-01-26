@@ -51,8 +51,7 @@ export class ChangePasswordComponent {
     this._authService.changePassword(passData)
       .subscribe({
       next: async (res: any) => {
-        console.log('GOT IT ', res);
-        this._router.navigate(['/typo/account']).then(() => {
+        this._router.navigate([`/main/${this._authService.userRole().toLowerCase()}-account`]).then(() => {
            window.location.reload();
         });
       },

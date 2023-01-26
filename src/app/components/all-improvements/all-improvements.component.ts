@@ -23,8 +23,4 @@ export class AllImprovementsComponent implements OnInit{
     });
   }
 
-
-  show(info: any) {
-    console.log(info);
-  }
 }

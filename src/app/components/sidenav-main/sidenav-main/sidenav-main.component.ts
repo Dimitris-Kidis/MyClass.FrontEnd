@@ -13,7 +13,7 @@ import { TeacherService } from 'src/services/teacher.service';
 })
 export class SidenavMainComponent implements OnInit {
 
-  constructor(private router: Router,
+  constructor(private _router: Router,
     private _authService: AuthentificationService,
     private _studService: StudentService,
     private _teacherService: TeacherService
@@ -23,7 +23,9 @@ export class SidenavMainComponent implements OnInit {
   user: User;
   className: string;
   ngOnInit(): void {
+    if (!this._authService.isLoggedIn()) this._router.navigate(['/']);
     this.role = this._authService.userRole();
+    this.checkRoute();
     this._authService.getUserdata().subscribe((info: User) => {
     this.user = info;
     // console.log(info);
@@ -31,24 +33,29 @@ export class SidenavMainComponent implements OnInit {
     if ( this.role == 'Student') {
       this._studService.getStudentAboutInfo(this._authService.getUserId()).subscribe((info: StudentAboutInfo) => {
         this.className = info.className;
-        // console.log(info);
       });
     } else if ( this.role == 'Teacher') {
-      // this._teacherService.getTeacherAboutInfo(this._authService.getUserId()).subscribe((info: StudentAboutInfo) => {
-      //   this.className = info.className;
-      //   // console.log(info);
-      // });
     } else {
 
+    }
+  }
+
+
+  checkRoute() {
+    var currentRoute = this._router.url;
+    var role = this._authService.userRole().toLowerCase();
+
+    if (currentRoute.includes('notes') || (this._router.url).includes(`${role}`)) {
+
+    } else {
+      this._router.navigate([`/main/${role}-account`])
     }
 
   }
 
-
-
   logout(): void {
     localStorage.removeItem('token');
-    this.router.navigate(['login']);
+    this._router.navigate(['login']);
 
   }
 }
