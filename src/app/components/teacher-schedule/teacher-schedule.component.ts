@@ -39,7 +39,6 @@ export class TeacherScheduleComponent {
   ngOnInit(): void {
       this._teacherService.getSchedulesForTeacher(this._authService.getUserId()).subscribe((schedules: SchedulesForTeacher[]) => {
         this.schedules = schedules;
-        console.log(schedules);
         this.setAllEvents();
       });
   }
@@ -49,7 +48,7 @@ export class TeacherScheduleComponent {
     for (let i = 0; i < this.schedules.length; i++) {
       this.events.push({
         Id: this.schedules[i].id, 
-        title: `${this.schedules[i].subjectName}`, 
+        title: `${this.schedules[i].subjectName}, ${this.schedules[i].className}`, 
         start: new Date(this.schedules[i].dateAndTime)
     });
     }

@@ -18,10 +18,7 @@ export class TeacherAccountComponent {
   downloadLink!: string;
 
   ngOnInit(): void {
-    // this._teacherService.getTeacherPrintSheet(this._authService.getUserId()).subscribe((obj: any) => {
-    //   this.downloadLink = obj.url;
-    //   console.log(this.downloadLink);
-    // });
+
   }
 
 }

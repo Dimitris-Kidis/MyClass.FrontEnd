@@ -66,7 +66,6 @@ export class TeacherGradesComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterContentInit(): void {
-    // this.sort.active = 'Id';
   }
 
   currentClassId: number;
@@ -104,10 +103,8 @@ export class TeacherGradesComponent implements AfterViewInit, OnInit {
 
   getSelectedValue(value: any) {
     console.log(this.pagination.nativeElement);
-    // this.paginationFlag = true;
     this.pagination.nativeElement.classList.remove('invisible');
     if (value.target.value == 0) {
-      // this.dowbloadButton.nativeElement.classcons
       this.dowbloadButton.nativeElement.classList.add('hidden')
       return;
     } else {
@@ -115,15 +112,12 @@ export class TeacherGradesComponent implements AfterViewInit, OnInit {
 
     }
 
-    console.log(value.target.value)
     var classIdAndSubjectId = (value.target.value).toString().split(',');
-    console.log(classIdAndSubjectId);
     this.currentClassId = classIdAndSubjectId[0];
     this.currentSubjectId = classIdAndSubjectId[1];
 
     this._teacherService.getTeacherPrintSheet(this._authService.getUserId(), this.currentClassId).subscribe((obj: any) => {
       this.downloadLink = obj.url;
-      console.log(this.downloadLink);
     });
     this.loadPagedReviews();
   }
@@ -134,13 +128,11 @@ export class TeacherGradesComponent implements AfterViewInit, OnInit {
     this._teacherService.getPagedStudentsWithGrades(paginatedRequest)
       .subscribe((pagedReviews: PagedResult<IGradeForTeacher>) => {
         this.pagedReviews = pagedReviews;
-        console.log(this.pagedReviews);
       });
   }
 
   hideList() {
     this.list.nativeElement.classList.add('hidden');
-    console.log('!');
   }
 
   applySearch() {

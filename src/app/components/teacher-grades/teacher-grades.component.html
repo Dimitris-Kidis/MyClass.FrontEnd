@@ -14,14 +14,12 @@
       <div *ngIf="paginationFlag" >
         <mat-card-header>
           <mat-card-title class="view-card-title">
-            <!-- <h1>{{pairs[3].className}}, {{pairs[3].subjectName}}</h1> -->
           </mat-card-title>
         </mat-card-header>
         <mat-toolbar>
           <mat-toolbar-row>
             <mat-form-field>
-                <!-- <label for="">Search</label> -->
-                <!-- <b>    dSearch</b> -->
+
               <input matInput [formControl]="searchInput" (keyup.enter)="applySearch()" placeholder="Search">
             </mat-form-field>
             <div class="buttons">

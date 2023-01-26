@@ -19,7 +19,6 @@ export class TeacherAboutInfoComponent {
 
   ngOnInit(): void {
       this._teachService.getTeacherAboutInfo(this._authService.getUserId()).subscribe((info: TeacherAboutInfo) => {
-      console.log(info);
       this.teacher = info;
     });
   }

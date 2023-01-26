@@ -19,7 +19,6 @@ export class StudentAccountComponent implements OnInit {
   ngOnInit(): void {
     this._studService.getStudentPrintSheet(this._authService.getUserId()).subscribe((obj: any) => {
       this.downloadLink = obj.url;
-      console.log(this.downloadLink);
     });
   }
 

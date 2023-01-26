@@ -34,7 +34,6 @@ export class DialogComponent implements OnInit{
       this.date = dateAndTime[0];
       this.time = dateAndTime[1].substring(0,5);
     });
-    console.log(this.data.id);
   }
 
 }
