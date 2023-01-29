@@ -17,6 +17,7 @@ import { AdminsAdminListComponent } from '../admins-admin-list/admins-admin-list
 import { AdminScheduleComponent } from '../admin-schedule/admin-schedule.component';
 import { AdminRelationsComponent } from '../admin-relations/admin-relations.component';
 import { AdminLessonsComponent } from '../admin-lessons/admin-lessons.component';
+import { PostsComponent } from '../posts/posts.component';
 
 
 
@@ -51,7 +52,7 @@ const mainRoutes: Routes = [
 
 
 
-
+          { path: 'posts', component: PostsComponent },
           { path: 'notes', component: NotesComponent },
 
         ]

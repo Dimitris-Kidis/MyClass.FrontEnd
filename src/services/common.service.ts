@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CreateImprovementCommand } from 'src/commands/Improvements/CreateImprovementCommand';
 import { CreateNoteCommand } from 'src/commands/Notes/CreateNoteCommand';
 import { Note } from 'src/models/Notes/Note';
+import { Post } from 'src/models/Posts/Post';
 import { ScheduleInfo } from 'src/models/Schedules/ScheduleInfo';
 
 @Injectable({
@@ -31,5 +32,9 @@ export class CommonService {
 
   getScheduleInfo(scheduleId: number): Observable<ScheduleInfo> {
     return this._httpService.get<ScheduleInfo>(`api/common/schedule/${scheduleId}`);
+  }
+
+  getAllPostsByTargetNumber(target: number): Observable<Post[]> {
+    return this._httpService.get<Post[]>(`api/common/all-posts/${target}`);
   }
 }

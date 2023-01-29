@@ -21,6 +21,8 @@ import { IAdminRow } from 'src/models/Admins/IAdminRow';
 import { RelationInfoRow } from 'src/models/Relations/RelationInfoRow';
 import { ScheduleInfo } from 'src/models/Schedules/ScheduleInfo';
 import { CreateScheduleCommand } from 'src/commands/Schedules/CreateScheduleCommand';
+import { CreatePostCommand } from 'src/commands/Posts/CreatePostCommand';
+import { PostRow } from 'src/models/Posts/PostRow';
 
 @Injectable({
   providedIn: 'root'
@@ -138,5 +140,21 @@ export class AdminService {
 
   deleteSchedule(scheduleId: number): Observable<any> {
     return this._httpService.delete<any>(`api/admin-controller/schedule/${scheduleId}`);
+  }
+
+  deletePost(postId: number): Observable<any> {
+    return this._httpService.delete<any>(`api/admin-controller/post/${postId}`);
+  }
+
+  createPost(command: CreatePostCommand): Observable<any> {
+    return this._httpService.post<any>("api/admin-controller/post", command);
+  }
+
+  getPost(postId: number): Observable<PostRow> {
+    return this._httpService.get<PostRow>(`api/admin-controller/post/${postId}`);
+  }
+
+  updatePost(command: PostRow): Observable<any> {
+    return this._httpService.put<any>("api/admin-controller/post", command);
   }
 }

@@ -15,6 +15,12 @@
               <span mat-line class="menu-item-name">Account</span>
             </div>
           </a>
+          <a mat-list-item routerLink="posts">
+            <div class="menu-item">
+              <mat-icon mat-list-icon>article</mat-icon>
+              <span mat-line class="menu-item-name">Posts</span>
+            </div>
+          </a>
           <a mat-list-item routerLink="student-classmates" *ngIf="role == 'Student'">
             <div class="menu-item">
               <mat-icon mat-list-icon>supervised_user_circle</mat-icon>

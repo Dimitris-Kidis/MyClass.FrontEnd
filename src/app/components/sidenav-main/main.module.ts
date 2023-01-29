@@ -46,6 +46,7 @@ import { AdminsAdminListComponent } from '../admins-admin-list/admins-admin-list
 import { AdminScheduleComponent } from '../admin-schedule/admin-schedule.component';
 import { AdminRelationsComponent } from '../admin-relations/admin-relations.component';
 import { AdminLessonsComponent } from '../admin-lessons/admin-lessons.component';
+import { PostsComponent } from '../posts/posts.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { AdminLessonsComponent } from '../admin-lessons/admin-lessons.component'
     AdminsAdminListComponent,
     AdminScheduleComponent,
     AdminRelationsComponent,
-    AdminLessonsComponent
+    AdminLessonsComponent,
+    PostsComponent
   ],
   providers: [
 

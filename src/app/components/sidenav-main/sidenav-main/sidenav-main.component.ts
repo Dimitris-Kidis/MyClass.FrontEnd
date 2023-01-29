@@ -45,7 +45,7 @@ export class SidenavMainComponent implements OnInit {
     var currentRoute = this._router.url;
     var role = this._authService.userRole().toLowerCase();
 
-    if (currentRoute.includes('notes') || (this._router.url).includes(`${role}`)) {
+    if (currentRoute.includes('notes') || currentRoute.includes('posts') || (this._router.url).includes(`${role}`)) {
 
     } else {
       this._router.navigate([`/main/${role}-account`])

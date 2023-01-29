@@ -1,0 +1,59 @@
+<div class="wrapper" *ngIf="!addFlag">
+    <div class="add" (click)="addPost()" *ngIf="role == 'Admin'">
+        <strong>Create a new post</strong>
+    </div>
+    <div class="container" *ngFor="let post of posts">
+        <div class="top">
+            <h1 class="header">
+                {{post.header}}
+            </h1>
+            <div class="actions">
+                <img src="https://typostorage.blob.core.windows.net/avatars/61_fnefwewbiewTTT+nefwbiewTTT2023-01-29T183230566.61456.png" alt="" (click)="editPost(post.id)" *ngIf="role == 'Admin'">
+                <img src="https://typostorage.blob.core.windows.net/avatars/61_fnefwewbiewTTT+nefwbiewTTT2023-01-29T161435040.1828665.png" alt="" (click)="deletePost(post.id)" *ngIf="role == 'Admin'">
+            </div>
+        </div>
+        <p class="text">
+            {{post.text}}
+        </p>
+        <div class="description">
+            <span class="author">
+                Written By {{post.author}}
+            </span>
+            <span class="date">
+                Date: {{post.createdAt.split('T')[0]}}
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper" *ngIf="addFlag">
+    <div class="add-header">
+        <input id="input-header" #header type="text" placeholder="Header *">
+        <input id="input-author" #author type="text" placeholder="Author *">
+    </div>
+    <textarea #text name="" id="" cols="30" rows="10" placeholder="Text *"></textarea>
+    <form class="choice" #form>
+        <span>Show To:</span>
+        <div>
+            <input type="radio" id="students" name="target" value="1">
+            <label for="students">Students</label>
+        </div>
+        <div>
+            <input type="radio" id="teachers" name="target" value="2">
+            <label for="teachers">Teachers</label>
+        </div>
+        <div>
+            <input type="radio" id="both" name="target" value="3">
+            <label for="both">Both</label>
+        </div>
+        
+    </form>
+    <div class="buttons">
+        <button id="upload" (click)="post()" *ngIf="!editFlag">Post</button>
+        <button id="upload" (click)="updatePost()" *ngIf="editFlag">Update</button>
+        <button id="delete" (click)="refresh()">Cancel</button>
+    </div>
+
+
+    
+</div>
