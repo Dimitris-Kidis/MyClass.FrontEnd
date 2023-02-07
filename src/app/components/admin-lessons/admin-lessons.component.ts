@@ -44,36 +44,27 @@ export class AdminLessonsComponent implements OnInit {
   subjectsWithIds: SubjectsWithId[];
   teachersWithIds: TeacherNameAndId[];
 
-  times: string[] = [
-    '08:00',
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-    '18:30',
-    '19:00',
-    '19:30',
-    '20:00',
-    '20:30'
-  ]
+  times: string[] = [];
 
   ngOnInit(): void {
+    var prevTime = 7;
+    for (let i = 0; i < 52; i++) {
+      if (i % 4 == 0) {
+        prevTime++;
+        if (prevTime >= 10) {
+          this.times.push(`${prevTime}:00`); 
+        } else {
+          this.times.push(`0${prevTime}:00`); 
+        }
+        continue;
+      }
+      if (prevTime >= 10) {
+        this.times.push(`${prevTime}:${(i%4)*15}`); 
+      } else {
+        this.times.push(`0${prevTime}:${(i%4)*15}`); 
+      }
+      // this.times.push();      
+    }
     this._adminService.getAllSchedules().subscribe(
       (schedules: ScheduleInfo[]) => {
         this.schedules = schedules;

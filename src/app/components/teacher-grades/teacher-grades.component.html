@@ -61,7 +61,7 @@
 
           <ng-container matColumnDef="average">
               <mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 10px; padding-right: 20px;"> Average </mat-header-cell>
-              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{(user.gradeOne+user.gradeTwo+user.gradeThree+user.gradeFour)/4}} </mat-cell>
+              <mat-cell *matCellDef="let user" style="padding-left: 10px; padding-right: 20px;"> {{((user.gradeOne+user.gradeTwo+user.gradeThree+user.gradeFour)/4).toFixed(2)}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="labs">
